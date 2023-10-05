@@ -37,25 +37,6 @@ async function  createAppointment(date, nama, umur, gender, phone, reason, docto
     }
 }
 
-// const createAppointment = (appointment) => {
-//     try {
-//         const createAppointment = prisma.appointment.create({
-//             data: {
-//                 id: appointment.id,
-//                 date: appointment.date + 'T00:00:00.000Z',
-//                 nama: appointment.nama,
-//                 umur: appointment.umur,
-//                 gender: appointment.gender,
-//                 phone: appointment.phone,
-//                 reason: appointment.reason,
-//                 id_doctor: appointment.id_doctor
-//             }
-//         })
-//         return createAppointment;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 
 // GET-Read Method
 const getAppointment = async() => {
