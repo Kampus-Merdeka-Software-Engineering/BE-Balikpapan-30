@@ -22,7 +22,7 @@ async function  createAppointment(date, nama, umur, gender, phone, reason, docto
                     reason,
                     doctor: {
                         connect: {
-                            id: doctor.id,
+                            id: doctor.id, 
                         },
                     },
                 },
@@ -65,6 +65,7 @@ const getAppointment = async() => {
                 doctor: {
                     select: {
                         nama: true,
+                        specialist: true,
                     }
                 }
             }
