@@ -62,9 +62,9 @@ const getAppointment = async() => {
         console.log(error);
     }
 }
-const getAppointmentById = (appointmentId) => {
+const getAppointmentById = async (appointmentId) => {
     try {
-        const appointment = prisma.appointment.findUnique({
+        const appointment = await prisma.appointment.findUnique({
             where: {
                 id: Number(appointmentId)
             },
@@ -77,11 +77,23 @@ const getAppointmentById = (appointmentId) => {
                 }
             }
         });
-        return appointment;
+
+        if (!appointment) {
+            return null; // Handle the case where the appointment is not found
+        }
+
+        const formattedAppointment = {
+            ...appointment,
+            date: moment(appointment.date).format('DD MMMM YYYY'),
+        };
+        
+        return formattedAppointment;
     } catch (error) {
         console.log(error);
+        throw error; // Rethrow the error to handle it at a higher level
     }
 }
+
 
  //PATCH-Update Method
  const updateAppointment = (appointment, appointmentId) => {
