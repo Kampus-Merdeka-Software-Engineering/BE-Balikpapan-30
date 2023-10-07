@@ -67,6 +67,14 @@ const getAppointmentById = (appointmentId) => {
         const appointment = prisma.appointment.findUnique({
             where: {
                 id: Number(appointmentId)
+            },
+            include: {
+                doctor: {
+                    select: {
+                        nama: true,
+                        specialist: true,
+                    }
+                }
             }
         });
         return appointment;
