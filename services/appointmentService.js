@@ -29,7 +29,7 @@ async function  createAppointment(date, nama, umur, gender, phone, reason, docto
             });
             return createAppointment
         } else {
-            throw new error(`Doctor '${doctor}' Nout Found`);
+            throw new error(`Doctor '${doctor}' Not Found`);
         }
     } catch (error) {
         console.error("Error in createAppointment: ", error);
